@@ -1,6 +1,6 @@
 # Django GTD
 
-A sample *Getting Things Done* (GTD) app using PostgreSQL, Memcached and the Django admin
+A sample *Getting Things Done* (GTD) app Memcached and the Django admin
 interface. To create projects, actions, context or make any modifications, use
 the Django admin URL at ``http://<app-url>/admin/``.
 
@@ -22,9 +22,11 @@ It uglifies these commands, but eliminates lots of sources of frustration. :-)
 This has been used on (at least) the following Python versions:
   - Python 2.6.6
 
-with Django 1.5 (the version is in the requirements.txt).
+with Django 1.6 (the version is in the requirements.txt).
 
-## Want to use PostgreSQL?
+## Databases
+
+I'm still developing in sqlite3, but Stackato version was set up for postgresql...
 
 To use mysql instead of postgresql on production, you need to make only a few
 changes before pushing (or updating) your app:
