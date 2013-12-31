@@ -11,14 +11,6 @@ the Django admin URL at ``http://<app-url>/admin/``.
     python manage.py migrate
     python manager.py runserver
 
-## Deploying to Stackato
-
-Push to the cloud, and then initialize the database:
-
-    stackato push -n
-
-Visit http://gtd.stackato.local/ to see the list of tasks. Visit http://gtd.stackato.local/admin/ to modify tasks, projects and contexts.
- 
 ## Want to use PostgreSQL?
 
 To use mysql instead of postgresql on production, you need to make only a few
