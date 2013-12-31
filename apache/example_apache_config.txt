@@ -1,0 +1,23 @@
+WSGIPythonHome /usr/local/pythonenv/BASELINE
+<VirtualHost *:80>
+   ServerName testing.mydomain.com
+   ServerAdmin admin@mydomain.com
+
+   WSGIScriptAlias / /home/apps/django_gtd/apache/django.wsgi
+   <Directory /home/apps/django_gtd/static>
+      Order allow,deny
+      Allow from all
+   </Directory>
+   <Directory /home/apps/django_gtd/media>
+      Order allow,deny
+      Allow from all
+   </Directory>
+
+   Alias /robots.txt /home/apps/django_gtd/apache/robots.txt
+   Alias /favicon.ico /home/apps/django_gtd/apache/favicon.ico
+   Alias /media /home/apps/django_gtd/media
+   Alias /static /home/apps/django_gtd/static
+
+   ErrorLog /home/apps/django_gtd/logs/error.log
+   CustomLog /home/apps/django_gtd/logs/access.log combined
+</VirtualHost>
