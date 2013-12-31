@@ -3,10 +3,20 @@ import os
 import sys
 import urlparse
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-ROOT = os.path.abspath(os.path.dirname(__file__))
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'oo%8002!suh#l66c+lq+58!huhb5#wi24x!)*%5z$v)gtnzw1^'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+TEMPLATE_DEBUG = True
+
+ALLOWED_HOSTS = []
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -14,8 +24,34 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-# running on stckato?
-STACKATO = 'VCAP_APPLICATION' in os.environ
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    #'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',    
+    'django_databrowse',
+    #'django.contrib.humanize',
+    'gtd',
+    'south',
+)
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+ROOT_URLCONF = 'django_gtd.urls'
+
+WSGI_APPLICATION = 'django_gtd.wsgi.application'
+
 
 DATABASES = {}
 if 'DATABASE_URL' in os.environ:
@@ -60,7 +96,11 @@ TIME_ZONE = 'America/Vancouver'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en_us'
 
-SITE_ID = 1
+LANGUAGE_CODE = 'en-us'
+
+TIME_ZONE = 'UTC'
+
+#SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
@@ -70,70 +110,17 @@ USE_I18N = True
 # calendars according to the current locale
 USE_L10N = True
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(ROOT, 'static')
-STATIC_ROOT = os.path.join(ROOT, 'media')
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
-STATIC_URL = '/media/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+# Absolute path to the directory that holds media.
+# Example: "/home/media/media.lawrence.com/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '77777777777777777777777777777u9w@hs7bdxt+w1k@f2&di'
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
-
-MIDDLEWARE_CLASSES = (
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
-)
-
-IGNORABLE_404_STARTS = ('/cgi-bin/', '/_vti_bin', '/_vti_inf')
-
-IGNORABLE_404_ENDS = ('mail.pl', 'mailform.pl', 'mail.cgi', 'mailform.cgi', 'favicon.ico', '.php')
-
-ROOT_URLCONF = 'urls'
-
-TEMPLATE_DIRS = (
-    os.path.join(ROOT, 'templates'),
-)
-
-INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    # 'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.admin',
-    'django.contrib.admindocs',
-    'django.contrib.databrowse',
-    'django.contrib.humanize',
-    'django.contrib.staticfiles',    
-    'gtd',
-    'south',
-)
-
-# try:
-#     execfile(os.path.join(ROOT, 'localsettings.py'))
-# except:
-#     sys.stderr.write("Error: Cant' find the file 'localsettings.py'. Please"
-#                      "override the settings localy not in settings.py \n")

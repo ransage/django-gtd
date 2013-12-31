@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib import databrowse
+import django_databrowse
 from gtd.models import Thing, Project, Context, Reminder
 from django import forms
 
@@ -62,7 +62,7 @@ admin.site.register(Thing, ThingAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Context, ContextAdmin)
 admin.site.register(Reminder, ReminderAdmin)
-databrowse.site.register(Thing)
-databrowse.site.register(Project)
-databrowse.site.register(Context)
-databrowse.site.register(Reminder)
+django_databrowse.site.register(Thing)
+django_databrowse.site.register(Project)
+django_databrowse.site.register(Context)
+django_databrowse.site.register(Reminder)

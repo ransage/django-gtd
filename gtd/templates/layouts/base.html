@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 <head>
+    {% load staticfiles %}
 	<title>{%block title %}{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="icon" href="{{MEDIA_URL}}img/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="{{MEDIA_URL}}css/styles.css" type="text/css" media="screen" />
+    <link rel="icon" href="{% static 'gtd/img/favicon.png' %}" type="image/png" />
+    <link rel="stylesheet" href="{% static 'gtd/css/styles.css' %}" type="text/css" media="screen" />
     {% block extrahead %}{% endblock %}
 </head>
 
