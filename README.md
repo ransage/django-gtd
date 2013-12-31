@@ -6,10 +6,23 @@ the Django admin URL at ``http://<app-url>/admin/``.
 
 ## Local development
 
-    pypm install -r requirements.txt
-    python manage.py syncdb
-    python manage.py migrate
-    python manager.py runserver
+For development, I recommend using a virtual environment to ensure that things work cleanly
+and do not collide in unexpected ways.  In this case, you can do the following
+
+    virtualenv venv   # Use your preferred folder name, venv is in .gitignore
+    ./venv/bin/pip install -r requirements.txt
+    ./venv/bin/python manage.py syncdb
+    ./venv/bin/python manage.py migrate
+    ./venv/bin/python manage.py runserver
+
+It uglifies these commands, but eliminates lots of sources of frustration. :-)
+
+### Compatibility
+
+This has been used on (at least) the following Python versions:
+  - Python 2.6.6
+
+with Django 1.5 (the version is in the requirements.txt).
 
 ## Want to use PostgreSQL?
 
@@ -24,9 +37,11 @@ changes before pushing (or updating) your app:
 The original page (http://code.google.com/p/django-gtd/) listed "Code license
 GNU GPL v3" on December 30, 2013 when I'm writing this.  Since I do not see anything 
 to the contrary in any of the pages and since a search for 'copy', 'copyright', '(c)'
-and 'license' only turn up the pre-rebase.sample in the .git folder, I will operate
+and 'license' only turns up the pre-rebase.sample in the .git folder, I will operate
 under the assumption that all contributors intended to contribute their code under
 GNU GPL v3.
 
 Note that individual authors may be willing to re-license their contributions.  
 (Unfortunately, it can be tedious to contact them all...)
+
+
