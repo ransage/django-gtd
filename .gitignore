@@ -1,3 +1,9 @@
 dev.db
 *.pyc
 
+# Directories/files used to deploy/run the site
+venv
+logs
+static
+media
+settings_production.py
