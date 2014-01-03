@@ -165,6 +165,8 @@ def incubate_by_context_name():
 
 INBOX_CONTEXT_STR = 'inbox'
 def inbox_by_context_name():
+    import sys
+    sys.error("Don't do this")
     for t in Thing.objects.all():
         if t.context.name.lower().find(INBOX_CONTEXT_STR) >= 0:
             t.status = t.STATE_INBOX
