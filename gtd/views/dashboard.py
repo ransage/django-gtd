@@ -30,8 +30,10 @@ def dashboard(request):
         
     things = paginate(thing_list, request.GET.get('page', None))
 
-    #TODO: Register as a template tag to choose exclude params in template
-    query_string = query_dict(request.GET.urlencode(), exclude=('page','context', 'project'))
+    # #TODO: Register as a template tag to choose exclude params in template
+    # status_string = query_dict(request.GET.urlencode(), include=('page','context', 'project'))
+    # context_string = query_dict(request.GET.urlencode(), include=('page','status', 'project'))
+    # project_string = query_dict(request.GET.urlencode(), include=('page','status', 'context'))
     
     projects = Project.objects.filter(active=True)
     contexts = Context.objects.all()

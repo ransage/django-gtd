@@ -1,7 +1,7 @@
 from django.http import QueryDict
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
-def query_dict(querystring, exclude):
+def query_dict_exclude(querystring, exclude):
     qdict = QueryDict(querystring).copy()
     query_string = str()
 
@@ -16,6 +16,27 @@ def query_dict(querystring, exclude):
 
     if query_dict_urlencode != '':
         query_string = query_dict_urlencode + "&"
+
+    query_string.replace('&', '&amp;')
+
+    return query_string
+    
+def query_dict(querystring, include):
+    qdict = QueryDict(querystring).copy()
+    query_string = str()
+
+    if type(include) != tuple:
+        raise Exception("include must be a tuple")
+
+    return_dict = {}
+    for item in include:
+        if item in qdict:
+            return_dict[item] = qdict[item]
+
+    return_dict_urlencode = qdict.urlencode() 
+
+    if return_dict_urlencode != '':
+        query_string = return_dict_urlencode + "&"
 
     query_string.replace('&', '&amp;')
 
