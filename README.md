@@ -1,21 +1,3 @@
-# Note - not in use
-
-I recommend you use somebody else's branch if you're thinking of using Django 
-GTD, since I'm not actively using/working this.
-
-I spent a day or two thinking about adopting Django-GTD to replace Tracks as 
-part of a general effort to migrate to Django.  I had made some changes to Tracks
-(a Ruby on Rails) app quite some time ago and lost those changes when forced to 
-upgrade the application (long story).  
-
-Anyway, I have a number of projects underway and I have convinced myself of the 
-feasibility of importing my Tracks to do items into Django-GTD (with some model 
-updates and scripting), so I'm going to defer the transition.  Instead, I'm 
-taking a few minutes to automate xml backups and I will make the transition 
-either when convenient or when our Tracks server next implodes.
-
-...
-
 
 # Django GTD
 
@@ -66,3 +48,7 @@ Note that individual authors may be willing to re-license their contributions.
 (Unfortunately, it can be tedious to contact them all...)
 
 
+## Documentation
+
+I've decided that I will make notes of both software features and how I map David Allen's
+process to Djang GTD.  When I have something, I'll make it available here.
