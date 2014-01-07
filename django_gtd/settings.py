@@ -98,6 +98,7 @@ LANGUAGE_CODE = 'en_us'
 
 LANGUAGE_CODE = 'en-us'
 
+USE_TZ = True
 TIME_ZONE = 'UTC'
 
 #SITE_ID = 1

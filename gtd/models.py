@@ -2,11 +2,11 @@ from django.db import models
 from gtd import managers
 from django.core.exceptions import ValidationError
 from django.db.models import Sum
-from datetime import datetime
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.humanize.templatetags.humanize import naturalday
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
+from django.utils.timezone import now
 
 class Project(models.Model):
     """
@@ -109,7 +109,7 @@ def validate_progress(value):
         raise ValidationError(_(u'%s is not a valid progress value') % value)
 
 def validate_schedule(value):
-    if value < datetime.now() :
+    if value < now() :
         raise ValidationError(_(u'Schedule date must be in future'))
 
 class Thing(models.Model):
@@ -222,7 +222,7 @@ class Reminder(models.Model):
     )
 
     thing = models.ForeignKey(Thing,
-                  limit_choices_to = {'schedule__gte': datetime.now})
+                  limit_choices_to = {'schedule__gte': now})
     number = models.IntegerField()
     unit = models.IntegerField(choices=UNITS, default=UNIT_DAY)
     method = models.IntegerField(choices=METHODS, default=METHOD_ALERT)
@@ -237,7 +237,7 @@ class Reminder(models.Model):
 
     @property
     def countdown(self):
-        return self.thing.schedule - datetime.now()
+        return self.thing.schedule - now()
 
     def clean(self):
         if not self.thing.schedule:
