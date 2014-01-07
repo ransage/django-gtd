@@ -25,6 +25,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 INSTALLED_APPS = (
+    'brillixy',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',

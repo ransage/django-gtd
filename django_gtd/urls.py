@@ -7,6 +7,10 @@ from django.shortcuts import redirect
 
 admin.autodiscover()
 
+# Setup Brillixy views & templates
+import brillixy.site
+brillixy.site.setup(admin.site)
+
 urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),

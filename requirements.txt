@@ -4,3 +4,4 @@ python-memcached
 django-databrowse
 ipython
 pytz
+brillixy  # Provides admin improvements
