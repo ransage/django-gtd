@@ -1,1 +1,26 @@
-Login failed
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+<head>
+    {% load browserid %}
+    {% load staticfiles %}
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  {% browserid_css %}
+	<title>{%block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="icon" href="{% static 'gtd/img/favicon.png' %}" type="image/png" />
+    <link rel="stylesheet" href="{% static 'gtd/css/styles.css' %}" type="text/css" media="screen" />
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body>
+
+      {% browserid_info %}
+Login failed<br>
+             {% browserid_login text='Login' color='dark' %}
+
+      <div id="footer"></div>
+    </div>
+    
+   {% browserid_js %}
+</body>
+</html>

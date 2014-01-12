@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^browserid/', include('django_browserid.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^databrowse/(.*)', login_required(django_databrowse.site.root)),

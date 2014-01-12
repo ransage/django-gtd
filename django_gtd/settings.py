@@ -11,6 +11,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'oo%8002!suh#l66c+lq+58!huhb5#wi24x!)*%5z$v)gtnzw1^'
 
+# Set your site url for security
+SITE_URL = ['http://127.0.0.1:8000', 'http://127.0.0.1:9000',]
+
+# BrowserID aka Persona
+LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL_FAILURE = '/gtd/login_failed.html'
+LOGOUT_REDIRECT_URL = '/'
+BROWSERID_CREATE_USER = True
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -28,6 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
+    'django_browserid',  # Load after auth
+    'django_extensions', # Used to show urls
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     #'django.contrib.sites',
@@ -46,6 +57,23 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django_browserid.context_processors.browserid',
+    'django.core.context_processors.request',
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+)
+
+AUTHENTICATION_BACKENDS = (
+   'django.contrib.auth.backends.ModelBackend', # required for admin
+   'django_browserid.auth.BrowserIDBackend',
 )
 
 ROOT_URLCONF = 'django_gtd.urls'
