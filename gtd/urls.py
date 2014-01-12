@@ -2,6 +2,7 @@ from django.conf.urls import patterns, url, include
 
 urlpatterns = patterns('gtd.views',
     url(r'^$',                      'dashboard.dashboard',      name='dashboard'),
+    url(r'^login_failed.html$',     'login.LoginFailed',        name='login_failed'),
     url(r'^thing/$',                'objects.thing_list',       name='thing_list'),
     url(r'^thing/(?P<id>\d+)$',     'objects.thing_detail',     name='thing_detail'),     
     url(r'^context/$',              'objects.context_list',     name='context_list'),
