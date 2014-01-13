@@ -30,7 +30,7 @@ class Project(models.Model):
 
     class Meta:
         get_latest_by = 'created'
-        ordering = ['-created',]
+        ordering = ['-active','name',]
 
     def __unicode__(self):
         return u"#%s" % self.slug
