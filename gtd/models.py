@@ -131,9 +131,9 @@ class Thing(models.Model):
         (STATE_DONE, _('done')),
     )
 
+    status = models.IntegerField(_('status'), choices=STATES, default=STATE_THING)
     name = models.CharField(_('name'), max_length=140)
     description = models.TextField(_('description'), blank=True)
-    status = models.IntegerField(_('status'), choices=STATES, default=STATE_THING)
     project = models.ForeignKey(Project, null=True, blank=True)
     context = models.ForeignKey(Context)
     deleted = models.BooleanField(_('deleted'), default=False)

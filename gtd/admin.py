@@ -9,8 +9,10 @@ class ReminderInline(admin.TabularInline):
 
 class ThingAdmin(admin.ModelAdmin):
     date_hierarchy = 'created'
-    list_display = ('get_name', 'get_context', 'get_project', 'get_progress',
-                    'status', 'get_reminders', 'get_created')
+    list_display = ('get_name', 'status', 'get_context', 'get_project', 'get_progress',
+                    'get_reminders', 'get_created')
+    #list_display = ('status', 'get_name', 'get_context', 'get_project', 
+    #                'get_progress', 'get_reminders', 'get_created')
     list_display_link = ('get_name', 'status')
     list_filter = ('context', 'project', 'schedule','status', 'deleted', 'archived', )
     list_editable = ('status', )
@@ -24,7 +26,8 @@ class ThingAdmin(admin.ModelAdmin):
 class ThingModelForm(forms.ModelForm):
     class Meta:
         model = Thing
-        fields = ('name', 'context', 'progress', 'status', 'project', 'deleted', 'archived')
+        #fields = ('name', 'context', 'progress', 'status', 'project', 'deleted', 'archived')
+        fields = ('status', 'name', 'context', 'progress', 'project', 'deleted', 'archived')
 
 class ThingInline(admin.TabularInline):
     model = Thing
